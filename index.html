@@ -10,7 +10,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #fff;
+            background: #f9f9f9;
             margin: 0;
             padding: 0;
         }
@@ -21,7 +21,7 @@
         }
         /* Header styles */
         .main-header {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -45,18 +45,13 @@
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
-        }
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-        }
-        .btn-login, .btn-signup {
-            padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: 600;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        .btn-login {
-            background: rgba(255,255,255,0.1);
+        .nav-links a:hover, .nav-links a.active {
+            background: white;
+            color: #4CAF50;
         }
         .btn-signup {
             background: white;
@@ -64,14 +59,33 @@
         }
         /* Hero section */
         .hero {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
+            position: relative;
+            background: url('Sedapachi_Banner.png') no-repeat center/cover, linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 2rem;
             text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero > .container {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .hero h1:hover {
+            transform: scale(1.05);
         }
         .hero p {
             font-size: 1.2rem;
@@ -83,20 +97,29 @@
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
         .btn-primary {
             background: #fff;
             color: #4CAF50;
         }
+        .btn-primary:hover {
+            transform: scale(1.1);
+            background: #45a049;
+            color: white;
+        }
         .btn-secondary {
             background: rgba(255,255,255,0.2);
             color: white;
         }
+        .btn-secondary:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.4);
+        }
         /* Features section */
         .features {
             padding: 4rem 0;
-            background: #f9f9f9;
+            background: url('https://www.transparenttextures.com/patterns/white-diamond.png');
         }
         .feature-grid {
             display: grid;
@@ -109,19 +132,89 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .feature-item h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .feature-item h3:hover {
+            color: #4CAF50;
+        }
+        /* Premium section */
+        .premium {
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        .premium h2 {
+            color: #FFD700;
+            margin-bottom: 2rem;
+        }
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .premium-item {
+            background: #fff;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .premium-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .premium-item img {
+            max-width: 100%;
+            border-radius: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        .premium-item h3:hover {
+            color: #4CAF50;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 1rem 0;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
         /* Story section */
         .story {
             padding: 4rem 0;
+            background: #f9f9f9;
         }
         .story-content {
             display: flex;
             align-items: center;
             gap: 2rem;
         }
-        .mascot {
+        .story-content img {
             max-width: 300px;
             border-radius: 50%;
+        }
+        .story-content div {
+            max-width: 600px;
         }
         /* Footer */
         footer {
@@ -130,16 +223,13 @@
             padding: 2rem 0;
             text-align: center;
         }
-        /* Responsive styles */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             .story-content {
                 flex-direction: column;
-            }
-            .mascot {
-                max-width: 200px;
             }
         }
     </style>
@@ -156,7 +246,7 @@
                 <a href="perfil.html">Perfil</a>
                 <a href="https://leetcode.com" target="_blank">Ejercicios</a>
                 <a href="login.html" class="btn-login">Iniciar Sesión</a>
-                <a href="registro.html" class="btn-signup">Registrarse</a>
+                <a href="registro.html" class="btn-login">Registrarse</a>
             </div>
         </nav>
     </header>
@@ -176,16 +266,36 @@
                 <h2>Características</h2>
                 <div class="feature-grid">
                     <div class="feature-item">
-                        <h3>Ejercicios Prácticos</h3>
+                        <h3>🚀 Ejercicios Prácticos</h3>
                         <p>Resuelve problemas reales y mejora tus habilidades con ejercicios interactivos.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Teoría Clara</h3>
+                        <h3>📚 Teoría Clara</h3>
                         <p>Aprende los conceptos fundamentales con explicaciones claras y ejemplos prácticos.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Mantén tu Racha</h3>
+                        <h3>🔥 Mantén tu Racha</h3>
                         <p>Desarrolla el hábito de programar diariamente y compite con amigos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="premium">
+            <div class="container">
+                <h2>¿Listo para llevar tus habilidades al siguiente nivel?</h2>
+                <div class="premium-grid">
+                    <div class="premium-item">
+                        <img src="Sedapachi_Plata.png" alt="Miembro Platinium">
+                        <h3>Miembro Platinium</h3>
+                        <p>Obtén acceso a contenido exclusivo y mentorías personalizadas.</p>
+                        <p class="price">$19.99/mes</p>
+                    </div>
+                    <div class="premium-item">
+                        <img src="Sedapachi_Oro.jpeg" alt="Miembro Gold">
+                        <h3>Miembro Gold</h3>
+                        <p>Descarga proyectos completos y recursos avanzados.</p>
+                        <p class="price">$29.99/mes</p>
                     </div>
                 </div>
             </div>
@@ -195,7 +305,7 @@
             <div class="container">
                 <h2>La Historia de Sedapachi</h2>
                 <div class="story-content">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DALLE_2024-11-23_18.38.03_-_A_whimsical_and_colorful_digital_illustration_of_a_virtual_pet_designed_as_a_pigeon_wearing_a_traditional_Peruvian_chullo_a_colorful_knit_hat_with_ea-hJTqqXZaTqCgKbP3kruCqDp5aSd9VY.webp" alt="Sedapachi" class="mascot">
+                    <img src="Sedapachi_Working.png" alt="Sedapachi">
                     <div>
                         <p>Todo comenzó cuando Sedapachi conoció a Sochi, una paloma programadora que parecía divertirse mucho codeando. Inspirado por ella, Sedapachi decidió aprender a programar y ha estado entrenando muy duro sus habilidades para poder participar juntos en el ICPC.</p>
                         <blockquote>"Ver a Sochi programar me inspiró a comenzar este viaje. ¡La programación es increíble!" - Sedapachi</blockquote>
@@ -213,3 +323,4 @@
     </footer>
 </body>
 </html>
+

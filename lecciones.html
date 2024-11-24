@@ -15,28 +15,43 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .main-header {
+            background: #4CAF50;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        nav {
+        .main-header nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-        nav a {
+        .logo h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-links a {
             color: white;
             text-decoration: none;
-            margin-right: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        nav a.active {
-            text-decoration: underline;
+        .nav-links a:hover, .nav-links a.active {
+            background: white;
+            color: #4CAF50;
         }
         .main-content {
             display: flex;
@@ -157,10 +172,12 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>Code Kuna</h1>
-            <div>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <h1>Code Kuna</h1>
+            </div>
+            <div class="nav-links">
                 <a href="index.html">Inicio</a>
                 <a href="lecciones.html" class="active">Lecciones</a>
                 <a href="perfil.html">Perfil</a>
@@ -325,3 +342,4 @@
     </footer>
 </body>
 </html>
+
