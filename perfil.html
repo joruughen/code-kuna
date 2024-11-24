@@ -65,7 +65,8 @@
         /* Profile page specific styles */
         .profile-header {
             display: flex;
-            align-items: center;
+            justify-content: space-between;
+            align-items: flex-start;
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -83,6 +84,12 @@
         .profile-info h1 {
             margin-bottom: 0.5rem;
         }
+        .streak-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
         .streak-counter {
             display: flex;
             align-items: center;
@@ -92,6 +99,39 @@
         }
         .streak-days {
             font-weight: bold;
+            color: #4CAF50;
+        }
+        .streak-image {
+            width: 100px;
+            height: 100px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        .friends-section {
+            margin-top: 2rem;
+        }
+        .friend-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .friend-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .friend-name {
+            font-weight: bold;
+        }
+        .friend-streak {
             color: #4CAF50;
         }
         .progress-section {
@@ -131,6 +171,10 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .streak-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -159,24 +203,44 @@
             <div class="profile-info">
                 <h1>¡Bienvenido, Usuario!</h1>
                 <p>Miembro desde: Noviembre 2024</p>
-                <div class="streak-counter">
-                    <span class="streak-days">7</span>
-                    <span class="streak-fire">🔥</span>
-                    <span>días seguidos</span>
+                <div class="streak-container">
+                    <div class="streak-counter">
+                        <span class="streak-days">7</span>
+                        <span class="streak-fire">🔥</span>
+                        <span>días seguidos</span>
+                    </div>
+                    <div class="streak-image">Imagen aquí</div>
                 </div>
             </div>
         </div>
 
+        <section class="friends-section">
+            <h2>Racha con tus amigos</h2>
+            <ul class="friend-list">
+                <li><span class="friend-name">Juan</span> <span class="friend-streak">5 días 🔥</span></li>
+                <li><span class="friend-name">Ana</span> <span class="friend-streak">4 días 🔥</span></li>
+                <li><span class="friend-name">Luis</span> <span class="friend-streak">3 días 🔥</span></li>
+            </ul>
+        </section>
+
         <section class="progress-section">
             <h2>Tu Progreso</h2>
-            <div class="progress-bar">
-                <div class="progress" style="width: 75%;">75%</div>
-            </div>
             <h3>Python Básico</h3>
             <div class="progress-bar">
-                <div class="progress" style="width: 50%;">50%</div>
+                <div class="progress" style="width: 25%;">25%</div>
             </div>
             <h3>JavaScript Fundamentos</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 0%;">0%</div>
+            </div>
+            <h3>HTML</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 0%;">0%</div>
+            </div>
+            <h3>CSS</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 0%;">0%</div>
+            </div>
         </section>
     </main>
 
@@ -187,3 +251,4 @@
     </footer>
 </body>
 </html>
+
