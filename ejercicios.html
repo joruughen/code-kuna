@@ -1,0 +1,77 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios - Code Kuna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1>Code Kuna</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lecciones.html">Lecciones</a></li>
+                <li><a href="rachas.html">Rachas</a></li>
+                <li><a href="ejercicios.html">Ejercicios</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Ejercicios Interactivos</h1>
+            <div class="exercise-area">
+                <h2>Ejercicio: Suma de dos números</h2>
+                <p>Escribe una función que sume dos números y devuelva el resultado.</p>
+                <textarea id="code-area" placeholder="Escribe tu código aquí...">
+function sumar(a, b) {
+    // Tu código aquí
+}
+
+// Ejemplo de uso:
+console.log(sumar(5, 3));
+                </textarea>
+                <button onclick="ejecutarCodigo()" class="btn">Ejecutar Código</button>
+                <div id="output"></div>
+            </div>
+            <p id="feedback"></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function ejecutarCodigo() {
+            const codigo = document.getElementById('code-area').value;
+            let output = '';
+            const originalLog = console.log;
+            console.log = function(message) {
+                output += message + '\n';
+            };
+            try {
+                eval(codigo);
+                document.getElementById('output').textContent = output;
+                if (output.trim() === '8') {
+                    document.getElementById('feedback').textContent = '¡Buen trabajo! Tu código funciona. ¿Listo para el siguiente desafío?';
+                } else {
+                    document.getElementById('feedback').textContent = 'Casi lo tienes. Intenta de nuevo.';
+                }
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error: ' + error.message;
+                document.getElementById('feedback').textContent = 'Hubo un error en tu código. Revísalo e intenta de nuevo.';
+            }
+            console.log = originalLog;
+        }
+    </script>
+</body>
+</html>
+```
