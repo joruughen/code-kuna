@@ -106,12 +106,16 @@
             height: 100px;
             background: #f5f5f5;
             border-radius: 10px;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             border: 1px solid #ddd;
-            color: #bbb;
-            font-size: 0.9rem;
+        }
+        .streak-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .friends-section {
             margin-top: 2rem;
@@ -209,7 +213,9 @@
                         <span class="streak-fire">🔥</span>
                         <span>días seguidos</span>
                     </div>
-                    <div class="streak-image">Imagen aquí</div>
+                    <div class="streak-image">
+                        <img src="Sedapachi_Racha.png" alt="Sedapachi">
+                    </div>
                 </div>
             </div>
         </div>
