@@ -1,63 +1,327 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecciones - Code Kuna</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        nav a.active {
+            text-decoration: underline;
+        }
+        .main-content {
+            display: flex;
+            width: 100%;
+            flex: 1;
+        }
+        .sidebar {
+            width: 230px;
+            background: #f5f5f5;
+            padding: 15px;
+            border-right: 1px solid #ddd;
+            position: sticky;
+            top: 60px;
+            height: calc(100vh - 60px);
+        }
+        .sidebar h3 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 10px;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .sidebar a:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        .lesson-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 230px;
+            max-width: 1000px;
+        }
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .lesson-module {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .lesson-module:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .module-title {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .module-title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .subtopics {
+            list-style: none;
+            padding: 0;
+        }
+        .subtopics li {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .subtopics li:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        .subtopics li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        .subtopics li a:hover {
+            color: white;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+        .mascot {
+            text-align: center;
+            margin: 20px 0 30px 0;
+        }
+        .mascot img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #4CAF50;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="container">
+        <nav>
             <h1>Code Kuna</h1>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="lecciones.html">Lecciones</a></li>
-                <li><a href="rachas.html">Rachas</a></li>
-                <li><a href="ejercicios.html">Ejercicios</a></li>
-                <li><a href="login.html">Iniciar Sesión</a></li>
-                <li><a href="registro.html">Registrarse</a></li>
-            </ul>
+            <div>
+                <a href="index.html">Inicio</a>
+                <a href="lecciones.html" class="active">Lecciones</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="https://leetcode.com" target="_blank">Ejercicios</a>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <div class="container">
-            <h1>Lecciones</h1>
-            <p>Selecciona una lección para avanzar en tu aprendizaje. ¡Te guiaré en cada paso!</p>
-            <div class="lesson-card">
-                <h2>Nivel Básico: Introducción a la Programación</h2>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 50%;">50%</div>
-                </div>
-                <p>Recompensa: 100 puntos</p>
-                <a href="#" class="btn">Empezar Lección</a>
+    <div class="main-content">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <h3>Temas</h3>
+            <ul>
+                <li><a href="#python">Python</a></li>
+                <li><a href="#javascript">JavaScript</a></li>
+                <li><a href="#html">HTML</a></li>
+                <li><a href="#css">CSS</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="lesson-content">
+            <div class="mascot">
+                <img src="Sedapachi.jpeg" alt="Mascota Code Kuna">
             </div>
-            <div class="lesson-card">
-                <h2>Nivel Intermedio: Estructuras de Control</h2>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 25%;">25%</div>
+            <h1>Lecciones de Programación</h1>
+
+            <!-- Sección Python -->
+            <section id="python">
+                <h2>Python</h2>
+                <div class="lesson-grid">
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon">
+                            Tipos de Datos
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#python-numbers">Números</a></li>
+                            <li><a href="#python-strings">Cadenas</a></li>
+                            <li><a href="#python-lists">Listas</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon">
+                            Condicionales
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#python-if">Sentencias if</a></li>
+                            <li><a href="#python-else">Sentencias else</a></li>
+                            <li><a href="#python-elif">Sentencias elif</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon">
+                            Bucles
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#python-for">Bucle for</a></li>
+                            <li><a href="#python-while">Bucle while</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon">
+                            Funciones
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#python-def">Definir funciones</a></li>
+                            <li><a href="#python-return">Return y parámetros</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <p>Recompensa: 200 puntos</p>
-                <a href="#" class="btn">Empezar Lección</a>
-            </div>
-            <div class="lesson-card">
-                <h2>Nivel Avanzado: Programación Orientada a Objetos</h2>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 0%;">0%</div>
+            </section>
+
+            <!-- Sección JavaScript -->
+            <section id="javascript">
+                <h2>JavaScript</h2>
+                <div class="lesson-grid">
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript icon">
+                            Introducción
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#js-basics">Sintaxis Básica</a></li>
+                            <li><a href="#js-variables">Variables</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript icon">
+                            Manipulación DOM
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#js-events">Eventos</a></li>
+                            <li><a href="#js-selectors">Selectores</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <p>Recompensa: 300 puntos</p>
-                <a href="#" class="btn">Empezar Lección</a>
-            </div>
+            </section>
+
+            <!-- Sección HTML -->
+            <section id="html">
+                <h2>HTML</h2>
+                <div class="lesson-grid">
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML icon">
+                            Estructura Básica
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#html-tags">Etiquetas Comunes</a></li>
+                            <li><a href="#html-links">Enlaces</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML icon">
+                            Formularios
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#html-forms">Campos Básicos</a></li>
+                            <li><a href="#html-validation">Validación</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección CSS -->
+            <section id="css">
+                <h2>CSS</h2>
+                <div class="lesson-grid">
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS icon">
+                            Selectores Básicos
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#css-selectors">Clases y IDs</a></li>
+                            <li><a href="#css-pseudo">Pseudoclases</a></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-module">
+                        <h3 class="module-title">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS icon">
+                            Diseño Responsivo
+                        </h3>
+                        <ul class="subtopics">
+                            <li><a href="#css-flexbox">Flexbox</a></li>
+                            <li><a href="#css-grid">Grid</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </div>
-    </main>
+    </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
-        </div>
+        <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
-```
