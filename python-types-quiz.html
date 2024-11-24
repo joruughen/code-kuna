@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Kuna - Quiz de Tipos de Datos Python</title>
+    <style>
+        /* Estilo base */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        /* Encabezado */
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Contenedor */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .theory-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .theory-section h2 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        .start-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background: #45a049;
+        }
+
+        .quiz-container {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 100%;
+            background: #4CAF50;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #f5f5f5;
+            border-color: #4CAF50;
+        }
+
+        .option.correct {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .option.incorrect {
+            background: #f44336;
+            color: white;
+            border-color: #f44336;
+        }
+
+        .feedback {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #FFEBEE;
+            color: #C62828;
+            display: block;
+        }
+
+        /* Hint y Sedapachi */
+        .sedapachi-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            z-index: 1000;
+        }
+
+        .sedapachi-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hint-trigger {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hint-trigger:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .hint-bubble {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            border: 2px solid #4CAF50;
+            display: none;
+            z-index: 1001;
+        }
+
+        .hint-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 10px solid #4CAF50;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Code Kuna</h1>
+        <a href="lecciones.html" class="back-button">Volver a Lecciones</a>
+    </header>
+
+    <div class="container">
+        <div class="theory-section" id="theory">
+            <h2>Tipos de Datos en Python</h2>
+            <p>Conoce los principales tipos de datos en Python y pon a prueba tus conocimientos.</p>
+            <button class="start-button" onclick="startQuiz()">Comenzar Quiz</button>
+        </div>
+
+        <div class="quiz-container" id="quiz">
+            <div class="progress-bar">
+                <div class="progress" style="width: 0%"></div>
+            </div>
+
+            <div class="question"></div>
+            <div class="options"></div>
+            <div class="feedback"></div>
+        </div>
+    </div>
+
+    <div class="sedapachi-container">
+        <div class="hint-trigger" onclick="toggleHint()">?</div>
+        <div class="hint-bubble" id="hint-bubble"></div>
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo-I2jKGdmHUKhdROOmKC5JvMAYL3UTwU.jpeg" alt="Sedapachi" class="sedapachi-img">
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = [
+            { value: "42", options: ["int", "float", "str", "bool"], correct: "int", hint: "Números sin decimales son enteros (int)." },
+            { value: "3.14", options: ["int", "float", "str", "bool"], correct: "float", hint: "Números con punto decimal son flotantes (float)." },
+            { value: '"Hola Python"', options: ["int", "str", "bool", "list"], correct: "str", hint: "El texto entre comillas es una cadena (str)." },
+            { value: "True", options: ["int", "str", "bool", "float"], correct: "bool", hint: "True y False son valores booleanos (bool)." },
+            { value: "[1, 2, 3]", options: ["tuple", "str", "dict", "list"], correct: "list", hint: "Los elementos entre corchetes [] forman una lista." },
+        ];
+
+        function startQuiz() {
+            document.getElementById('theory').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+            updateQuestion();
+        }
+
+        function updateQuestion() {
+            const question = questions[currentQuestion];
+            document.querySelector('.question').innerHTML = `<p>¿Qué tipo de dato es <strong>${question.value}</strong>?</p>`;
+            const optionsContainer = document.querySelector('.options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach(option => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(optionDiv);
+            });
+            updateHint(question.hint);
+        }
+
+        function checkAnswer(selected) {
+            const question = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.style.pointerEvents = 'none');
+
+            const feedback = document.querySelector('.feedback');
+            if (selected === question.correct) {
+                feedback.textContent = '¡Correcto!';
+                feedback.classList.add('correct');
+                feedback.classList.remove('incorrect');
+            } else {
+                feedback.textContent = `Incorrecto. La respuesta correcta es ${question.correct}`;
+                feedback.classList.add('incorrect');
+                feedback.classList.remove('correct');
+            }
+
+            feedback.style.display = 'block';
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    document.querySelector('.quiz-container').innerHTML = `
+                        <h2>¡Felicidades!</h2>
+                        <p>Has completado el quiz.</p>
+                        <button onclick="location.reload()" class="start-button">Intentar de nuevo</button>`;
+                }
+            }, 2000);
+        }
+
+        function toggleHint() {
+            const hintBubble = document.getElementById('hint-bubble');
+            hintBubble.style.display = hintBubble.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function updateHint(hint) {
+            document.getElementById('hint-bubble').textContent = hint;
+        }
+    </script>
+</body>
+</html>
+
