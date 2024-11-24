@@ -13,7 +13,6 @@
             background: #f5f5f5;
         }
 
-        /* Encabezado */
         .header {
             background: #4CAF50;
             color: white;
@@ -36,7 +35,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Contenedor */
         .container {
             max-width: 800px;
             margin: 2rem auto;
@@ -150,7 +148,6 @@
             display: block;
         }
 
-        /* Hint y Sedapachi */
         .sedapachi-container {
             position: fixed;
             bottom: 20px;
@@ -267,6 +264,7 @@
             document.querySelector('.question').innerHTML = `<p>¿Qué tipo de dato es <strong>${question.value}</strong>?</p>`;
             const optionsContainer = document.querySelector('.options');
             optionsContainer.innerHTML = '';
+            document.querySelector('.feedback').style.display = 'none'; // Reinicia el feedback
             question.options.forEach(option => {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'option';
@@ -275,6 +273,7 @@
                 optionsContainer.appendChild(optionDiv);
             });
             updateHint(question.hint);
+            document.getElementById('hint-bubble').style.display = 'none'; // Oculta el hint por defecto
         }
 
         function checkAnswer(selected) {
@@ -283,14 +282,20 @@
             options.forEach(opt => opt.style.pointerEvents = 'none');
 
             const feedback = document.querySelector('.feedback');
+            const correctOption = Array.from(options).find(opt => opt.textContent === question.correct);
+
             if (selected === question.correct) {
                 feedback.textContent = '¡Correcto!';
                 feedback.classList.add('correct');
                 feedback.classList.remove('incorrect');
+                correctOption.classList.add('correct');
             } else {
                 feedback.textContent = `Incorrecto. La respuesta correcta es ${question.correct}`;
                 feedback.classList.add('incorrect');
                 feedback.classList.remove('correct');
+                correctOption.classList.add('correct');
+                const selectedOption = Array.from(options).find(opt => opt.textContent === selected);
+                selectedOption.classList.add('incorrect');
             }
 
             feedback.style.display = 'block';
