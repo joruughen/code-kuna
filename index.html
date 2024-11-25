@@ -177,8 +177,8 @@
             gap: 3rem;
         }
         .premium-item {
-            background: #fff;
-            color: #333;
+            background: linear-gradient(145deg, #2C3E50, #34495E);
+            color: #fff;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -204,6 +204,20 @@
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
+        .premium-item:nth-child(1) h3 {
+            color: #e5e4e2;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            animation: glowPlatinum 2s ease-in-out infinite;
+        }
+        .premium-item:nth-child(2) h3 {
+            color: #ffd700;
+            animation: glowGold 2s ease-in-out infinite;
+        }
+
+        .premium-item p {
+            color: #e0e0e0;
+        }
+
         .price {
             font-size: 2rem;
             font-weight: bold;
@@ -277,7 +291,143 @@
                 margin-bottom: 2rem;
             }
         }
+
+        /* New styles for enhancements */
+        .story-footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-top {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-top:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        /* Animaciones para la sección premium */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .premium-item img {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPlatinum {
+            0% { text-shadow: 0 0 5px rgba(0,0,0,0.5), 0 0 10px rgba(229,228,226,0.5); }
+            50% { text-shadow: 0 0 5px rgba(0,0,0,0.5), 0 0 20px rgba(229,228,226,0.8), 0 0 30px rgba(229,228,226,0.6); }
+            100% { text-shadow: 0 0 5px rgba(0,0,0,0.5), 0 0 10px rgba(229,228,226,0.5); }
+        }
+
+        @keyframes glowGold {
+            0% { text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+            50% { text-shadow: 0 0 20px rgba(255,215,0,0.8); }
+            100% { text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+        }
+
+        .premium h2 {
+            animation: glowGold 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255,215,0,0.6);
+        }
+
+        .subscribe {
+          background: linear-gradient(135deg, #4CAF50, #45a049);
+          padding: 4rem 0;
+          text-align: center;
+          color: white;
+        }
+
+        .subscribe h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          animation: fadeInUp 1s ease-out;
+        }
+
+        .subscribe p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .subscribe-form {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .subscribe-form input {
+          padding: 0.75rem 1rem;
+          border: none;
+          border-radius: 5px;
+          font-size: 1rem;
+          min-width: 300px;
+        }
+
+        .subscribe-form button {
+          padding: 0.75rem 1.5rem;
+          background-color: #FFD700;
+          color: #333;
+          border: none;
+          border-radius: 5px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .subscribe-form button:hover {
+          background-color: #FFC107;
+          transform: translateY(-3px);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+          .subscribe-form {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .subscribe-form input,
+          .subscribe-form button {
+            width: 100%;
+            max-width: 300px;
+          }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="main-header">
@@ -316,7 +466,8 @@
                     </div>
                     <div class="feature-item">
                         <h3>📚 Teoría Clara</h3>
-                        <p>Aprende los conceptos fundamentales con explicaciones claras y ejemplos prácticos.</p>
+                        <p>Aprende los conceptos fundamentales con
+explicaciones claras y ejemplos prácticos.</p>
                     </div>
                     <div class="feature-item">
                         <h3>🔥 Mantén tu Racha</h3>
@@ -357,7 +508,26 @@
                         <blockquote>"La determinación de Sedapachi es admirable. ¡Estoy segura que llegaremos lejos en el ICPC!" - Sochi</blockquote>
                     </div>
                 </div>
+                <div class="story-footer">
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <a href="#" class="btn-top">Volver al inicio</a>
+                </div>
             </div>
+        </section>
+        <section class="subscribe">
+          <div class="container">
+            <h2>¡No te pierdas ninguna novedad!</h2>
+            <p>Suscríbete para recibir consejos exclusivos de programación, actualizaciones de Sedapachi y ofertas especiales.</p>
+            <form class="subscribe-form">
+              <input type="email" placeholder="Tu correo electrónico" required>
+              <button type="submit">¡Quiero aprender con Sedapachi!</button>
+            </form>
+          </div>
         </section>
     </main>
 
@@ -368,3 +538,4 @@
     </footer>
 </body>
 </html>
+
