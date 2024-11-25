@@ -118,38 +118,25 @@
             height: 100%;
             object-fit: cover;
         }
-        /* Friends section */
-        .friends-section {
+        /* Grid for Racha and Progress */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             margin-top: 2rem;
+        }
+        .grid-item {
             background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .friend-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .friend-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .friend-name {
-            font-weight: bold;
-        }
-        .friend-streak {
-            color: #4CAF50;
+        .grid-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
         /* Progress section */
-        .progress-section {
-            margin-top: 2rem;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-        }
         .progress-bar {
             background: #e0e0e0;
             height: 20px;
@@ -167,6 +154,71 @@
             color: white;
             transition: width 0.5s ease-in-out;
         }
+        /* Achievements and Rewards sections */
+        .achievements-section {
+            margin-top: 2rem;
+        }
+        .achievement {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .achievement:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .achievement img {
+            width: 200px;
+            height: 200px;
+        }
+        .achievement-content .achievement-title {
+            font-weight: bold;
+            margin: 0;
+        }
+        .achievement-content .achievement-description {
+            margin: 0;
+        }
+        .rewards-section {
+            margin-top: 2rem;
+        }
+        .reward-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .reward-card {
+            text-align: center;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .reward-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .reward-card img {
+            width: 60px;
+            height: 60px;
+        }
+        .reward-card .btn-redeem {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .reward-card .btn-redeem:hover {
+            background: #45a049;
+        }
         /* Footer styles */
         footer {
             background: #333;
@@ -174,17 +226,6 @@
             padding: 2rem 0;
             text-align: center;
             margin-top: 2rem;
-        }
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .streak-container {
-                flex-direction: column;
-                align-items: center;
-            }
         }
     </style>
 </head>
@@ -200,66 +241,109 @@
                 <a href="perfil.html" class="active">Perfil</a>
                 <a href="https://leetcode.com" target="_blank">Ejercicios</a>
                 <a href="login.html" class="btn-login">Iniciar Sesión</a>
-                <a href="registro.html" class="btn-signup">Registrarse</a>
+                <a href="registro.html" class="btn-login">Registrarse</a>
             </div>
         </nav>
     </header>
-
     <main class="container">
+        <!-- Perfil -->
         <div class="profile-header">
             <div class="profile-avatar">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DALLE_2024-11-23_18.38.03_-_A_whimsical_and_colorful_digital_illustration_of_a_virtual_pet_designed_as_a_pigeon_wearing_a_traditional_Peruvian_chullo_a_colorful_knit_hat_with_ea-hJTqqXZaTqCgKbP3kruCqDp5aSd9VY.webp" alt="Avatar del usuario">
+                <img src="Sedapachi_Working.png" alt="Avatar del usuario">
             </div>
             <div class="profile-info">
                 <h1>¡Bienvenido, Usuario!</h1>
-                <p>Miembro desde: Noviembre 2024</p>
-                <div class="streak-container">
-                    <div class="streak-counter">
-                        <span class="streak-days">7</span>
-                        <span class="streak-fire">🔥</span>
-                        <span>días seguidos</span>
-                    </div>
-                    <div class="streak-image">
-                        <img src="Sedapachi_Racha.png" alt="Sedapachi">
-                    </div>
+                <p>Miembro desde: Noviembre 2024    |    Racha: 7 días 🔥</p>
+            </div>
+        </div>
+        <!-- Grid for Racha and Progress -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <h2>Racha con tus amigos</h2>
+                <ul class="friend-list">
+                    <li><span class="friend-name">Juan</span> <span class="friend-streak">5 días 🔥</span></li>
+                    <li><span class="friend-name">Ana</span> <span class="friend-streak">4 días 🔥</span></li>
+                    <li><span class="friend-name">Luis</span> <span class="friend-streak">3 días 🔥</span></li>
+                </ul>
+            </div>
+            <div class="grid-item">
+                <h2>Tu Progreso</h2>
+                <h3>Python Básico</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 25%;">25%</div>
+                </div>
+                <h3>JavaScript Fundamentos</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;">0%</div>
+                </div>
+                <h3>HTML</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;">0%</div>
+                </div>
+                <h3>CSS</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;">0%</div>
                 </div>
             </div>
         </div>
-
-        <section class="friends-section">
-            <h2>Racha con tus amigos</h2>
-            <ul class="friend-list">
-                <li><span class="friend-name">Juan</span> <span class="friend-streak">5 días 🔥</span></li>
-                <li><span class="friend-name">Ana</span> <span class="friend-streak">4 días 🔥</span></li>
-                <li><span class="friend-name">Luis</span> <span class="friend-streak">3 días 🔥</span></li>
-            </ul>
+        <!-- Logros -->
+        <section class="achievements-section">
+            <h2>Logros Desbloqueados</h2>
+            <div class="achievement">
+                <img src="trophy.png" alt="Trophy">
+                <div class="achievement-content">
+                    <p class="achievement-title">Maestro del Álgebra</p>
+                    <p class="achievement-description">Completaste todos los ejercicios de álgebra</p>
+                </div>
+            </div>
+            <div class="achievement">
+                <img src="Sedapachi_Racha.png" alt="Fire">
+                <div class="achievement-content">
+                    <p class="achievement-title">Racha de 7 días</p>
+                    <p class="achievement-description">Practicaste durante 7 días consecutivos</p>
+                </div>
+            </div>
+            <div class="achievement">
+                <img src="rocket.png" alt="Rocket">
+                <div class="achievement-content">
+                    <p class="achievement-title">Velocista Matemático</p>
+                    <p class="achievement-description">Resolvió 10 problemas en menos de 5 minutos</p>
+                </div>
+            </div>
         </section>
-
-        <section class="progress-section">
-            <h2>Tu Progreso</h2>
-            <h3>Python Básico</h3>
-            <div class="progress-bar">
-                <div class="progress" style="width: 25%;">25%</div>
-            </div>
-            <h3>JavaScript Fundamentos</h3>
-            <div class="progress-bar">
-                <div class="progress" style="width: 0%;">0%</div>
-            </div>
-            <h3>HTML</h3>
-            <div class="progress-bar">
-                <div class="progress" style="width: 0%;">0%</div>
-            </div>
-            <h3>CSS</h3>
-            <div class="progress-bar">
-                <div class="progress" style="width: 0%;">0%</div>
+        <!-- Catálogo de Recompensas -->
+        <section class="rewards-section">
+            <h2>Catálogo de Recompensas</h2>
+            <div class="reward-grid">
+                <div class="reward-card">
+                    <img src="book.png" alt="Libro">
+                    <p class="reward-title">Libro de Matemáticas Avanzadas</p>
+                    <p class="reward-points">500 puntos</p>
+                    <button class="btn-redeem">Reclamar</button>
+                </div>
+                <div class="reward-card">
+                    <img src="palette.png" alt="Tema">
+                    <p class="reward-title">Tema Personalizado</p>
+                    <p class="reward-points">300 puntos</p>
+                    <button class="btn-redeem">Reclamar</button>
+                </div>
+                <div class="reward-card">
+                    <img src="badge.png" alt="Insignia">
+                    <p class="reward-title">Insignia Exclusiva</p>
+                    <p class="reward-points">1000 puntos</p>
+                    <button class="btn-redeem">Reclamar</button>
+                </div>
+                <div class="reward-card">
+                    <img src="premium.png" alt="Curso Premium">
+                    <p class="reward-title">Curso Premium</p>
+                    <p class="reward-points">2000 puntos</p>
+                    <button class="btn-redeem">Reclamar</button>
+                </div>
             </div>
         </section>
     </main>
-
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
-        </div>
+        <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
