@@ -257,45 +257,10 @@
             border-left: 4px solid #005f8f;
             padding-left: 1rem;
             margin: 1.5rem 0;
-        }
-        /* Design Thinking section */
-        .design-thinking {
-            padding: 6rem 0;
-            background: #ffffff;
-        }
-        .design-thinking h2 {
-            color: #005f8f;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .design-thinking-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 4rem;
-        }
-        .design-thinking-text {
-            flex: 1;
-        }
-        .video-container {
-            flex: 1;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        } 
         /* Footer */
         footer {
-            background: #005f8f;
+            background: #003459;
             color: white;
             padding: 3rem 0;
             text-align: center;
@@ -546,39 +511,60 @@
             </div>
         </section>
 
-        <section id="design-thinking" class="design-thinking">
-            <div class="container">
-                <h2>Design Thinking</h2>
-                <div class="design-thinking-content">
-                    <div class="design-thinking-text">
-                        <p>En Code Kuna, nos apasiona la educación en tecnología y creemos en el poder transformador de la programación. Nuestra misión es hacer que el aprendizaje de la programación sea accesible, divertido y efectivo para todos.</p>
-                        <p>Nuestro equipo está formado por expertos en educación y tecnología, comprometidos con proporcionar la mejor experiencia de aprendizaje posible. Con Sedapachi como nuestra mascota y guía, estamos construyendo una comunidad vibrante de futuros programadores.</p>
-                    </div>
-                    <div class="video-container">
-                        <!-- Reemplaza el src con el enlace real de tu video cuando lo tengas -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="cta-section">
+    <div class="container">
+        <h2>¿Listo para comenzar tu viaje en la programación?</h2>
+        <p>Únete a nuestra comunidad y da el siguiente paso hacia convertirte en un programador experto.</p>
+        <a href="registro.html" class="btn-cta">¡Comienza ahora!</a>
+    </div>
+    <style>
+        .cta-section {
+            background: linear-gradient(90deg, #005f8f 0%, #00d1ff 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn-cta {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #005f8f;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-cta:hover {
+            background-color: #FFD700;
+            color: #005f8f;
+            transform: translateY(-3px);
+        }
+    </style>
+</section>
 
-        <section class="subscribe">
-          <div class="container">
-            <h2>¡No te pierdas ninguna novedad!</h2>
-            <p>Suscríbete para recibir consejos exclusivos de programación, actualizaciones de Sedapachi y ofertas especiales.</p>
-            <form class="subscribe-form">
-              <input type="email" placeholder="Tu correo electrónico" required>
-              <button type="submit">¡Quiero aprender con Sedapachi!</button>
-            </form>
-          </div>
-        </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
+    <div class="container">
+        <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </<div>
         </div>
-    </footer>
+    </div>
+    
+</footer>
 </body>
 </html>
 
