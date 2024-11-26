@@ -428,25 +428,187 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header class="main-header">
-        <nav class="container">
-            <div class="logo">
-                <h1>Code Kuna</h1>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active">Inicio</a>
-                <a href="lecciones.html">Lecciones</a>
-                <a href="conocenos.html">Conócenos</a>
-                <a href="perfil.html">Perfil</a>
-                <a href="https://leetcode.com" target="_blank">Ejercicios</a>
-                <a href="login.html" class="btn-login">Iniciar Sesión</a>
-                <a href="registro.html" class="btn-login">Registrarse</a>
-            </div>
-        </nav>
-    </header>
+<!-- Add this at the top of your HTML file, inside the <head> tag -->
+<style>
+    .main-header {
+        background: linear-gradient(90deg, #005f8f 0%, #00d1ff 100%);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
 
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .logo-container:hover {
+        transform: scale(1.05);
+    }
+
+    .logo-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .logo-container:hover .logo-img {
+        transform: rotate(5deg);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-text {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        margin: 0;
+        background: linear-gradient(45deg, #ffffff, #f0f0f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: text-shadow 0.3s ease;
+    }
+
+    .logo-container:hover .logo-text {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.7rem 1.2rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-link:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: transform 0.5s ease;
+        transform: skewX(-15deg);
+    }
+
+    .nav-link:hover:before {
+        transform: translateX(100%) skewX(-15deg);
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link.btn-login {
+        background: white;
+        color: #005f8f;
+        font-weight: 700;
+        padding: 0.7rem 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link.btn-login:hover {
+        background: #f0f0f0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-link.btn-register {
+        border: 2px solid white;
+        padding: 0.7rem 1.5rem;
+    }
+
+    .nav-link.btn-register:hover {
+        background: white;
+        color: #005f8f;
+    }
+
+    @media (max-width: 1200px) {
+        .logo-text {
+            font-size: 2rem;
+        }
+        .logo-img {
+            width: 60px;
+            height: 60px;
+        }
+        .nav-link {
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .nav-container {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+<!-- Add this where you want the navbar to appear -->
+<header class="main-header">
+    <nav class="nav-container">
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpeg" alt="Code Kuna Logo" class="logo-img">
+            <h2 class="logo-text">Code Kuna</h2>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="lecciones.html" class="nav-link">Lecciones</a>
+            <a href="conocenos.html" class="nav-link">Conócenos</a>
+            <a href="perfil.html" class="nav-link">Perfil</a>
+            <a href="https://leetcode.com" target="_blank" class="nav-link">Ejercicios</a>
+            <a href="login.html" class="nav-link btn-login">Iniciar Sesión</a>
+            <a href="registro.html" class="nav-link btn-register">Registrarse</a>
+        </div>
+    </nav>
+</header>
     <main>
         <section class="hero">
             <div class="container">
