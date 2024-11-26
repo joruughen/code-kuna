@@ -9,7 +9,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #003459;
             background: #f0f0f0;
             margin: 0;
             padding: 0;
@@ -125,7 +125,7 @@
         }
         .btn-secondary:hover {
             background: white;
-            color:  #005f8f;
+            color: #005f8f;
             transform: translateY(-5px);
         }
         /* Features section */
@@ -151,7 +151,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         .feature-item h3 {
-            color:  #005f8f;
+            color: #005f8f;
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
@@ -200,7 +200,7 @@
             transform: scale(1.1);
         }
         .premium-item h3 {
-            color:  #005f8f;
+            color: #005f8f;
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
@@ -213,11 +213,9 @@
             color: #ffd700;
             animation: glowGold 2s ease-in-out infinite;
         }
-
         .premium-item p {
             color: #e0e0e0;
         }
-
         .price {
             font-size: 2rem;
             font-weight: bold;
@@ -249,20 +247,55 @@
             max-width: 600px;
         }
         .story h2 {
-            color:  #005f8f;
+            color: #005f8f;
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
         blockquote {
             font-style: italic;
-            color:  #666;
-            border-left: 4px solid  #005f8f;
+            color: #666;
+            border-left: 4px solid #005f8f;
             padding-left: 1rem;
             margin: 1.5rem 0;
         }
+        /* Design Thinking section */
+        .design-thinking {
+            padding: 6rem 0;
+            background: #ffffff;
+        }
+        .design-thinking h2 {
+            color: #005f8f;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .design-thinking-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+        .design-thinking-text {
+            flex: 1;
+        }
+        .video-container {
+            flex: 1;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
         /* Footer */
         footer {
-            background:  #005f8f;
+            background: #005f8f;
             color: white;
             padding: 3rem 0;
             text-align: center;
@@ -290,14 +323,16 @@
             .story-content img {
                 margin-bottom: 2rem;
             }
+            .design-thinking-content {
+                flex-direction: column;
+            }
         }
-
         /* New styles for enhancements */
         .story-footer {
             margin-top: 2rem;
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg,  #005f8f,  #005f8f);
+            background: linear-gradient(135deg, #4CAF50, #45a049);
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
@@ -322,7 +357,7 @@
             display: inline-block;
             padding: 10px 20px;
             background-color: white;
-            color:  #005f8f;
+            color: #4CAF50;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -363,7 +398,7 @@
         }
 
         .subscribe {
-          background: linear-gradient(135deg,  #005f8f, #45a049);
+          background: linear-gradient(135deg, #4CAF50, #45a049);
           padding: 4rem 0;
           text-align: center;
           color: white;
@@ -436,8 +471,9 @@
                 <h1>Code Kuna</h1>
             </div>
             <div class="nav-links">
-                <a href="index.html" class="active">Inicio</a>
+                <a href="#" class="active">Inicio</a>
                 <a href="lecciones.html">Lecciones</a>
+                <a href="conocenos.html">Conócenos</a>
                 <a href="perfil.html">Perfil</a>
                 <a href="https://leetcode.com" target="_blank">Ejercicios</a>
                 <a href="login.html" class="btn-login">Iniciar Sesión</a>
@@ -458,7 +494,7 @@
 
         <section class="features">
             <div class="container">
-                <h2 style="text-align: center; color:  #005f8f; font-size: 2.5rem; margin-bottom: 3rem;">Funcionalidades principales</h2>
+                <h2 style="text-align: center; color: #005f8f; font-size: 2.5rem; margin-bottom: 3rem;">Funcionalidades principales</h2>
                 <div class="feature-grid">
                     <div class="feature-item">
                         <h3>🚀 Ejercicios Prácticos</h3>
@@ -466,8 +502,7 @@
                     </div>
                     <div class="feature-item">
                         <h3>📚 Teoría Clara</h3>
-                        <p>Aprende los conceptos fundamentales con
-explicaciones claras y ejemplos prácticos.</p>
+                        <p>Aprende los conceptos fundamentales con explicaciones claras y ejemplos prácticos.</p>
                     </div>
                     <div class="feature-item">
                         <h3>🔥 Mantén tu Racha</h3>
@@ -490,7 +525,7 @@ explicaciones claras y ejemplos prácticos.</p>
                     <div class="premium-item">
                         <img src="Sedapachi_Oro.jpeg" alt="Miembro Gold">
                         <h3>Miembro Gold</h3>
-                        <p>Descarga proyectos completos y recursos avanzados.</p>
+<p>Descarga proyectos completos y recursos avanzados.</p>
                         <p class="price">S/. 29.99/mes</p>
                     </div>
                 </div>
@@ -508,17 +543,25 @@ explicaciones claras y ejemplos prácticos.</p>
                         <blockquote>"La determinación de Sedapachi es admirable. ¡Estoy segura que llegaremos lejos en el ICPC!" - Sochi</blockquote>
                     </div>
                 </div>
-                <div class="story-footer">
-                    <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </section>
+
+        <section id="design-thinking" class="design-thinking">
+            <div class="container">
+                <h2>Design Thinking</h2>
+                <div class="design-thinking-content">
+                    <div class="design-thinking-text">
+                        <p>En Code Kuna, nos apasiona la educación en tecnología y creemos en el poder transformador de la programación. Nuestra misión es hacer que el aprendizaje de la programación sea accesible, divertido y efectivo para todos.</p>
+                        <p>Nuestro equipo está formado por expertos en educación y tecnología, comprometidos con proporcionar la mejor experiencia de aprendizaje posible. Con Sedapachi como nuestra mascota y guía, estamos construyendo una comunidad vibrante de futuros programadores.</p>
                     </div>
-                    <a href="#" class="btn-top">Volver al inicio</a>
+                    <div class="video-container">
+                        <!-- Reemplaza el src con el enlace real de tu video cuando lo tengas -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </section>
+
         <section class="subscribe">
           <div class="container">
             <h2>¡No te pierdas ninguna novedad!</h2>
@@ -538,4 +581,5 @@ explicaciones claras y ejemplos prácticos.</p>
     </footer>
 </body>
 </html>
+
 

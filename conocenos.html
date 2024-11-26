@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conócenos - Code Kuna</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #003459;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header styles */
+        .main-header {
+            background: linear-gradient(90deg, #005f8f 0%, #00d1ff 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .main-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: white;
+            color: #005f8f;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* Hero section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        /* Content sections */
+        .content-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        .content-section:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .content-section h2 {
+            color: #005f8f;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .content-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .content-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .content-item h3 {
+            color: #00d1ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content-item p {
+            color: #003459;
+        }
+        /* Team section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #00d1ff;
+            transition: all 0.3s ease;
+        }
+        .team-member:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        /* Footer */
+        footer {
+            background: #003459;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <h1>Code Kuna</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="lecciones.html">Lecciones</a>
+                <a href="conocenos.html" class="active">Conócenos</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="https://leetcode.com" target="_blank">Ejercicios</a>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="registro.html">Registrarse</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Conócenos</h1>
+                <p>Descubre la historia y el equipo detrás de Code Kuna</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Nuestra Historia</h2>
+                <p>Code Kuna fue fundada en 2024 por un grupo de apasionados de la tecnología y la educación. Nuestra misión es democratizar el acceso a la programación para estudiantes de secundaria, proporcionando herramientas innovadoras y accesibles que faciliten el aprendizaje de Python y otros lenguajes de programación. Lo que comenzó como un pequeño proyecto se ha convertido en una plataforma líder en educación tecnológica, inspirando a miles de jóvenes a desarrollar habilidades cruciales para el futuro.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Misión y Visión</h2>
+                <div class="content-grid">
+                    <div class="content-item">
+                        <h3>Misión</h3>
+                        <p>Inspirar y capacitar a la próxima generación de programadores mediante una plataforma educativa accesible y de alta calidad. Queremos asegurarnos de que todos los estudiantes, independientemente de su origen, tengan la oportunidad de aprender a programar y prosperar en el ámbito tecnológico.</p>
+                    </div>
+                    <div class="content-item">
+                        <h3>Visión</h3>
+                        <p>Ser la plataforma líder en educación en línea para programación, reconocida por transformar la educación tecnológica y fomentar el desarrollo de futuros innovadores. Aspiramos a crear un entorno inclusivo y diverso donde cada estudiante pueda alcanzar su máximo potencial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Nuestros Valores</h2>
+                <div class="content-grid">
+                    <div class="content-item">
+                        <h3>Innovación</h3>
+                        <p>Nos esforzamos por estar a la vanguardia de la tecnología educativa, utilizando las últimas herramientas y métodos para mejorar continuamente nuestra plataforma.</p>
+                    </div>
+                    <div class="content-item">
+                        <h3>Accesibilidad</h3>
+                        <p>Creemos que la educación en programación debe estar al alcance de todos, por lo que ofrecemos opciones gratuitas y de bajo costo.</p>
+                    </div>
+                    <div class="content-item">
+                        <h3>Calidad Educativa</h3>
+                        <p>Nos comprometemos a proporcionar contenidos educativos de alta calidad, diseñados y revisados por expertos en la materia.</p>
+                    </div>
+                    <div class="content-item">
+                        <h3>Inclusividad</h3>
+                        <p>Fomentamos un entorno de aprendizaje inclusivo y acogedor para todos los estudiantes, valorando la diversidad y la colaboración.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Nuestro Equipo</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Fundador">
+                        <h3>Juan Pérez</h3>
+                        <p>Fundador y CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Co-fundadora">
+                        <h3>María García</h3>
+                        <p>Co-fundadora y CTO</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Diseñador">
+                        <h3>Carlos Rodríguez</h3>
+                        <p>Diseñador UX/UI</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Desarrolladora">
+                        <h3>Ana López</h3>
+                        <p>Desarrolladora Full-stack</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Code Kuna. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
