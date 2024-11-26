@@ -5,25 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Kuna - Quiz de Tipos de Datos Python</title>
     <style>
-        /* Estilo base */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #005f8f;
+            --secondary-color: #00d1ff;
+            --accent-color: #0077be;
+            --background-color: #f0f8ff;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .header {
-            background: #4CAF50;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 1rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
         .header h1 {
-            margin: 0;
             font-size: 24px;
         }
 
@@ -33,50 +54,56 @@
             padding: 8px 16px;
             border-radius: 4px;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .container {
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 20px;
+            margin: 100px auto 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .theory-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .hero {
             margin-bottom: 2rem;
         }
 
-        .theory-section h2 {
-            color: #4CAF50;
-            margin-top: 0;
+        .hero h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .start-button {
-            background: #4CAF50;
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .start-button, .option {
+            background-color: var(--accent-color);
             color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
-            display: block;
-            margin: 2rem auto;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .start-button:hover {
-            background: #45a049;
+        .start-button:hover, .option:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .quiz-container {
             display: none;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .progress-bar {
@@ -84,37 +111,38 @@
             background: #e0e0e0;
             border-radius: 4px;
             margin-bottom: 20px;
+            overflow: hidden;
         }
 
         .progress {
             height: 100%;
-            background: #4CAF50;
-            border-radius: 4px;
-            transition: width 0.3s ease;
+            background: var(--accent-color);
+            width: 0;
+            transition: width 0.5s ease;
         }
 
         .question {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .options {
             display: grid;
-            gap: 10px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .option {
             padding: 12px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+            background-color: white;
+            color: var(--accent-color);
         }
 
         .option:hover {
-            background: #f5f5f5;
-            border-color: #4CAF50;
+            background-color: var(--accent-color);
+            color: white;
         }
 
         .option.correct {
@@ -130,47 +158,69 @@
         }
 
         .feedback {
-            padding: 10px;
+            padding: 1rem;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
             display: none;
         }
 
         .feedback.correct {
             background: #E8F5E9;
             color: #2E7D32;
-            display: block;
         }
 
         .feedback.incorrect {
             background: #FFEBEE;
             color: #C62828;
-            display: block;
         }
 
-        .sedapachi-container {
+        .mascot-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             z-index: 1000;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .sedapachi-img {
+        .mascot-img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .mascot-img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hint-container {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
         }
 
         .hint-trigger {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            background: #4CAF50;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -179,37 +229,79 @@
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s;
+            margin-bottom: 10px;
         }
 
         .hint-trigger:hover {
-            transform: translateX(-50%) scale(1.1);
+            transform: scale(1.1);
+            background-color: var(--primary-color);
         }
 
         .hint-bubble {
-            position: absolute;
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
             background: white;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 250px;
-            border: 2px solid #4CAF50;
+            border: 2px solid var(--accent-color);
             display: none;
-            z-index: 1001;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hint-bubble::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-top: 10px solid #4CAF50;
+            right: 20px;
+            border-top: 10px solid var(--accent-color);
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
+        }
+
+        .data-type-info {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .data-type-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .data-type-info p {
+            margin-bottom: 1rem;
+        }
+
+        .data-type-example {
+            background-color: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-bottom: 1rem;
+        }
+
+        .data-type-icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .question-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -220,37 +312,111 @@
     </header>
 
     <div class="container">
-        <div class="theory-section" id="theory">
-            <h2>Tipos de Datos en Python</h2>
-            <p>Conoce los principales tipos de datos en Python y pon a prueba tus conocimientos.</p>
+        <div class="hero">
+            <h2>Quiz de Tipos de Datos en Python</h2>
+            <p>Pon a prueba tus conocimientos sobre los principales tipos de datos en Python.</p>
+        </div>
+
+        <div id="theory">
+            <div class="data-type-info">
+                <h3><span class="data-type-icon">🔢</span>Números (int y float)</h3>
+                <p>Python maneja dos tipos principales de números:</p>
+                <div class="data-type-example">
+                    x = 5  # int (entero)<br>
+                    y = 3.14  # float (punto flotante)
+                </div>
+                <p>Los enteros son números sin parte decimal, mientras que los flotantes tienen decimales.</p>
+            </div>
+
+            <div class="data-type-info">
+                <h3><span class="data-type-icon">🔤</span>Cadenas (str)</h3>
+                <p>Las cadenas son secuencias de caracteres:</p>
+                <div class="data-type-example">
+                    nombre = "Python"  # str
+                </div>
+                <p>Pueden estar entre comillas simples o dobles.</p>
+            </div>
+
+            <div class="data-type-info">
+                <h3><span class="data-type-icon">✅</span>Booleanos (bool)</h3>
+                <p>Los booleanos representan valores de verdad:</p>
+                <div class="data-type-example">
+                    es_verdadero = True<br>
+                    es_falso = False
+                </div>
+                <p>Se usan en operaciones lógicas y de control de flujo.</p>
+            </div>
+
+            <div class="data-type-info">
+                <h3><span class="data-type-icon">📋</span>Listas (list)</h3>
+                <p>Las listas son colecciones ordenadas y mutables:</p>
+                <div class="data-type-example">
+                    frutas = ["manzana", "banana", "cereza"]
+                </div>
+                <p>Pueden contener elementos de diferentes tipos.</p>
+            </div>
+
             <button class="start-button" onclick="startQuiz()">Comenzar Quiz</button>
         </div>
 
-        <div class="quiz-container" id="quiz">
+        <div id="quiz" class="quiz-container">
             <div class="progress-bar">
-                <div class="progress" style="width: 0%"></div>
+                <div class="progress"></div>
             </div>
 
             <div class="question"></div>
             <div class="options"></div>
             <div class="feedback"></div>
+            <img class="question-image" src="" alt="Imagen relacionada con la pregunta" style="display: none;">
         </div>
     </div>
 
-    <div class="sedapachi-container">
-        <div class="hint-trigger" onclick="toggleHint()">?</div>
-        <div class="hint-bubble" id="hint-bubble"></div>
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo-I2jKGdmHUKhdROOmKC5JvMAYL3UTwU.jpeg" alt="Sedapachi" class="sedapachi-img">
+    <div class="mascot-container">
+        <div class="hint-container">
+            <div class="hint-trigger" onclick="toggleHint()">?</div>
+            <div class="hint-bubble" id="hint-bubble"></div>
+        </div>
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo-I2jKGdmHUKhdROOmKC5JvMAYL3UTwU.jpeg" alt="Sedapachi" class="mascot-img">
     </div>
 
     <script>
         let currentQuestion = 0;
         const questions = [
-            { value: "42", options: ["int", "float", "str", "bool"], correct: "int", hint: "Números sin decimales son enteros (int)." },
-            { value: "3.14", options: ["int", "float", "str", "bool"], correct: "float", hint: "Números con punto decimal son flotantes (float)." },
-            { value: '"Hola Python"', options: ["int", "str", "bool", "list"], correct: "str", hint: "El texto entre comillas es una cadena (str)." },
-            { value: "True", options: ["int", "str", "bool", "float"], correct: "bool", hint: "True y False son valores booleanos (bool)." },
-            { value: "[1, 2, 3]", options: ["tuple", "str", "dict", "list"], correct: "list", hint: "Los elementos entre corchetes [] forman una lista." },
+            { 
+                value: "42", 
+                options: ["int", "float", "str", "bool"], 
+                correct: "int", 
+                hint: "Números sin decimales son enteros (int).",
+                image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            { 
+                value: "3.14", 
+                options: ["int", "float", "str", "bool"], 
+                correct: "float", 
+                hint: "Números con punto decimal son flotantes (float).",
+                image: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            { 
+                value: '"Hola Python"', 
+                options: ["int", "str", "bool", "list"], 
+                correct: "str", 
+                hint: "El texto entre comillas es una cadena (str).",
+                image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            { 
+                value: "True", 
+                options: ["int", "str", "bool", "float"], 
+                correct: "bool", 
+                hint: "True y False son valores booleanos (bool).",
+                image: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            { 
+                value: "[1, 2, 3]", 
+                options: ["tuple", "str", "dict", "list"], 
+                correct: "list", 
+                hint: "Los elementos entre corchetes [] forman una lista.",
+                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
         ];
 
         function startQuiz() {
@@ -264,7 +430,7 @@
             document.querySelector('.question').innerHTML = `<p>¿Qué tipo de dato es <strong>${question.value}</strong>?</p>`;
             const optionsContainer = document.querySelector('.options');
             optionsContainer.innerHTML = '';
-            document.querySelector('.feedback').style.display = 'none'; // Reinicia el feedback
+            document.querySelector('.feedback').style.display = 'none';
             question.options.forEach(option => {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'option';
@@ -273,7 +439,9 @@
                 optionsContainer.appendChild(optionDiv);
             });
             updateHint(question.hint);
-            document.getElementById('hint-bubble').style.display = 'none'; // Oculta el hint por defecto
+            document.getElementById('hint-bubble').style.display = 'none';
+            updateProgressBar();
+            updateQuestionImage(question.image);
         }
 
         function checkAnswer(selected) {
@@ -285,12 +453,12 @@
             const correctOption = Array.from(options).find(opt => opt.textContent === question.correct);
 
             if (selected === question.correct) {
-                feedback.textContent = '¡Correcto!';
+                feedback.textContent = '¡Correcto! 🎉';
                 feedback.classList.add('correct');
                 feedback.classList.remove('incorrect');
                 correctOption.classList.add('correct');
             } else {
-                feedback.textContent = `Incorrecto. La respuesta correcta es ${question.correct}`;
+                feedback.textContent = `Incorrecto. La respuesta correcta es ${question.correct} 😕`;
                 feedback.classList.add('incorrect');
                 feedback.classList.remove('correct');
                 correctOption.classList.add('correct');
@@ -306,8 +474,8 @@
                     updateQuestion();
                 } else {
                     document.querySelector('.quiz-container').innerHTML = `
-                        <h2>¡Felicidades!</h2>
-                        <p>Has completado el quiz.</p>
+                        <h2 style="color: var(--primary-color);">¡Felicidades! 🎊</h2>
+                        <p style="font-size: 1.2rem; margin: 1rem 0;">Has completado el quiz.</p>
                         <button onclick="location.reload()" class="start-button">Intentar de nuevo</button>`;
                 }
             }, 2000);
@@ -321,7 +489,18 @@
         function updateHint(hint) {
             document.getElementById('hint-bubble').textContent = hint;
         }
+
+        function updateProgressBar() {
+            const progressBar = document.querySelector('.progress');
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function updateQuestionImage(imageUrl) {
+            const questionImage = document.querySelector('.question-image');
+            questionImage.src = imageUrl;
+            questionImage.style.display = 'block';
+        }
     </script>
 </body>
 </html>
-
