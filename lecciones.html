@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecciones - Code Kuna</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #ffffff;
+            background-color: #f0f0f0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -38,7 +40,8 @@
             margin: 0;
         }
         .nav-links {
-            display: flex;
+            display:
+flex;
             gap: 1rem;
         }
         .nav-links a {
@@ -60,15 +63,16 @@
         }
         .sidebar {
             width: 230px;
-            background: #f5f5f5;
+            background: #ffffff;
             padding: 15px;
             border-right: 1px solid #ddd;
             position: sticky;
             top: 60px;
             height: calc(100vh - 60px);
+            overflow-y: auto;
         }
         .sidebar h3 {
-            color:  #005f8f;
+            color: #005f8f;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             text-align: center;
@@ -89,7 +93,7 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
         .sidebar a:hover {
-            background:  #005f8f;
+            background: #005f8f;
             color: white;
         }
         .lesson-content {
@@ -117,7 +121,7 @@
         }
         .module-title {
             font-size: 1.2rem;
-            color:  #005f8f;
+            color: #005f8f;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -166,8 +170,48 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border: 4px solid  #005f8f;
+            border: 4px solid #005f8f;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .mascot img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .hero-banner {
+            background: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-banner h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero-banner p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
@@ -180,11 +224,17 @@
             <div class="nav-links">
                 <a href="index.html">Inicio</a>
                 <a href="lecciones.html" class="active">Lecciones</a>
+                <a href="conocenos.html">Conócenos</a>
                 <a href="perfil.html">Perfil</a>
                 <a href="https://leetcode.com" target="_blank">Ejercicios</a>
             </div>
         </nav>
     </header>
+
+    <div class="hero-banner">
+        <h1>Lecciones de Programación</h1>
+        <p>Explora nuestros cursos y comienza tu viaje en el mundo de la programación</p>
+    </div>
 
     <div class="main-content">
         <!-- Barra lateral -->
@@ -201,9 +251,8 @@
         <!-- Contenido principal -->
         <div class="lesson-content">
             <div class="mascot">
-                <img src="Sedapachi.jpeg" alt="Mascota Code Kuna">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo-I2jKGdmHUKhdROOmKC5JvMAYL3UTwU.jpeg" alt="Mascota Code Kuna" class="floating">
             </div>
-            <h1>Lecciones de Programación</h1>
 
             <!-- Sección Python -->
             <section id="python">
@@ -343,3 +392,5 @@
     </footer>
 </body>
 </html>
+
+
