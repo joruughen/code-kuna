@@ -94,7 +94,6 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
         }
 
         .content-section {
@@ -130,16 +129,6 @@
         .content-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .content-item h3 {
-            color: #00d1ff;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-item p {
-            color: #003459;
         }
 
         .team-grid {
@@ -184,17 +173,6 @@
             text-align: center;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -203,15 +181,6 @@
 
         .floating {
             animation: float 3s ease-in-out infinite;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
         }
     </style>
 </head>
@@ -237,40 +206,28 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Conócenos</h1>
-                <p>Descubre la historia y el equipo detrás de Code Kuna</p>
+                <p>CodeKuna representa un puente entre el aprendizaje tradicional y las nuevas tecnologías, destacándose por su enfoque modular y gamificado, que promueve el progreso continuo y la creatividad mientras facilita la accesibilidad tecnológica para los estudiantes.</p>
             </div>
         </section>
-
         <section class="content-section">
             <div class="container">
                 <h2>Nuestra Historia</h2>
-                <div class="content-grid">
-                    <div class="content-item floating">
-                        <h3>Nuestros Inicios</h3>
-                        <p>Code Kuna fue fundada en 2024 por un grupo de apasionados de la tecnología y la educación. Nuestra misión es democratizar el acceso a la programación para estudiantes de secundaria.</p>
-                    </div>
-                    <div class="content-item floating">
-                        <h3>Nuestro Crecimiento</h3>
-                        <p>Lo que comenzó como un pequeño proyecto se ha convertido en una plataforma líder en educación tecnológica, inspirando a miles de jóvenes a desarrollar habilidades cruciales para el futuro.</p>
-                    </div>
-                </div>
-                <div class="video-container" style="margin-top: 3rem;">
+                <div class="video-container">
                     <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
-
         <section class="content-section">
             <div class="container">
                 <h2>Misión y Visión</h2>
                 <div class="content-grid">
                     <div class="content-item">
                         <h3>Misión</h3>
-                        <p>Inspirar y capacitar a la próxima generación de programadores mediante una plataforma educativa accesible y de alta calidad. Queremos asegurarnos de que todos los estudiantes, independientemente de su origen, tengan la oportunidad de aprender a programar y prosperar en el ámbito tecnológico.</p>
+                        <p>Democratizar el acceso al aprendizaje de programación, inspirando a los estudiantes de secundaria en Perú a construir su futuro con herramientas tecnológicas innovadoras.</p>
                     </div>
                     <div class="content-item">
                         <h3>Visión</h3>
-                        <p>Ser la plataforma líder en educación en línea para programación, reconocida por transformar la educación tecnológica y fomentar el desarrollo de futuros innovadores. Aspiramos a crear un entorno inclusivo y diverso donde cada estudiante pueda alcanzar su máximo potencial.</p>
+                        <p>Convertirnos en el líder en educación tecnológica gamificada en América Latina, capacitando a la próxima generación de innovadores digitales.</p>
                     </div>
                 </div>
             </div>
@@ -278,23 +235,23 @@
 
         <section class="content-section">
             <div class="container">
-                <h2>Nuestros Valores</h2>
+                <h2>Valores</h2>
                 <div class="content-grid">
                     <div class="content-item floating">
                         <h3>Innovación</h3>
-                        <p>Nos esforzamos por estar a la vanguardia de la tecnología educativa, utilizando las últimas herramientas y métodos para mejorar continuamente nuestra plataforma.</p>
+                        <p>Diseñar experiencias educativas gamificadas que transformen el aprendizaje.</p>
                     </div>
                     <div class="content-item floating">
                         <h3>Accesibilidad</h3>
-                        <p>Creemos que la educación en programación debe estar al alcance de todos, por lo que ofrecemos opciones gratuitas y de bajo costo.</p>
+                        <p>Hacer la programación alcanzable para todos los estudiantes, independientemente de su nivel previo.</p>
                     </div>
                     <div class="content-item floating">
-                        <h3>Calidad Educativa</h3>
-                        <p>Nos comprometemos a proporcionar contenidos educativos de alta calidad, diseñados y revisados por expertos en la materia.</p>
+                        <h3>Creatividad</h3>
+                        <p>Fomentar el pensamiento creativo y la resolución de problemas a través de dinámicas interactivas.</p>
                     </div>
                     <div class="content-item floating">
-                        <h3>Inclusividad</h3>
-                        <p>Fomentamos un entorno de aprendizaje inclusivo y acogedor para todos los estudiantes, valorando la diversidad y la colaboración.</p>
+                        <h3>Progresión</h3>
+                        <p>Garantizar que cada paso en la plataforma construya habilidades sólidas hacia metas mayores.</p>
                     </div>
                 </div>
             </div>
@@ -327,6 +284,8 @@
                 </div>
             </div>
         </section>
+
+       
     </main>
 
     <footer>
@@ -336,5 +295,4 @@
     </footer>
 </body>
 </html>
-
 
